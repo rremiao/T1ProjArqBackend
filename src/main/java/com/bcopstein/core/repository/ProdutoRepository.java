@@ -1,5 +1,7 @@
 package com.bcopstein.core.repository;
 
-public class ProdutoRepository {
+import com.bcopstein.business.interfaces.IProdutoRepository;
+
+public class ProdutoRepository implements IProdutoRepository {
     
 }

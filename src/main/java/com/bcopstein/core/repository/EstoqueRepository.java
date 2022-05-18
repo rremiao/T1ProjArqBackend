@@ -1,5 +1,7 @@
 package com.bcopstein.core.repository;
 
-public class EstoqueRepository {
+import com.bcopstein.business.interfaces.IEstoqueRepository;
+
+public class EstoqueRepository implements IEstoqueRepository {
     
 }

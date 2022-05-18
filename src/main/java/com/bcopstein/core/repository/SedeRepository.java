@@ -1,5 +1,7 @@
 package com.bcopstein.core.repository;
 
-public class SedeRepository {
+import com.bcopstein.business.interfaces.ISedeRepository;
+
+public class SedeRepository implements ISedeRepository {
     
 }

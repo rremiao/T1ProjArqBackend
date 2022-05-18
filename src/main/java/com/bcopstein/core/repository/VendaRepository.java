@@ -1,5 +1,7 @@
 package com.bcopstein.core.repository;
 
-public class VendaRepository {
+import com.bcopstein.business.interfaces.IVendaRepository;
+
+public class VendaRepository implements IVendaRepository{
     
 }

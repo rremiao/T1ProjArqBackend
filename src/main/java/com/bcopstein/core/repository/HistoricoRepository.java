@@ -1,5 +1,7 @@
 package com.bcopstein.core.repository;
 
-public class HistoricoRepository {
+import com.bcopstein.business.interfaces.IHistoricoRepository;
+
+public class HistoricoRepository implements IHistoricoRepository{
     
 }
