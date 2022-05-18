@@ -31,11 +31,11 @@ public class Controller {
     cacheFrete = new HashMap<>();
     // Cria e carrega o estoque
     produtos = new ArrayList<>();
-    produtos.add(new Produto(10, "Geladeira", 2500.0, 10));
-    produtos.add(new Produto(20, "Fogao", 1200.0, 0));
-    produtos.add(new Produto(30, "Lava louça", 4300.0, 7));
-    produtos.add(new Produto(40, "Lava roupa", 3350.0, 11));
-    produtos.add(new Produto(50, "Aspirador de pó", 780.0, 22));
+    produtos.add(new Produto(10, "Geladeira", 2500.0, 10, "ata", "A"));
+    produtos.add(new Produto(20, "Fogao", 1200.0, 0, "ata", "A"));
+    produtos.add(new Produto(30, "Lava louça", 4300.0, 7, "ata", "A"));
+    produtos.add(new Produto(40, "Lava roupa", 3350.0, 11, "ata", "A"));
+    produtos.add(new Produto(50, "Aspirador de pó", 780.0, 22, "ata", "A"));
 
     // Cria a lista de vendas efetuadas
     vendasEfetuadas = new ArrayList<>();
