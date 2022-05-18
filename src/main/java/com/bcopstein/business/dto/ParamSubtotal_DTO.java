@@ -1,4 +1,6 @@
-package com.bcopstein;
+package com.bcopstein.business.dto;
+
+import com.bcopstein.business.entity.ItemCarrinho;
 
 public class ParamSubtotal_DTO {
     private ItemCarrinho[] itens;
