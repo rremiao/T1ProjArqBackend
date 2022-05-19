@@ -1,10 +1,10 @@
 package com.bcopstein.business.dto;
 
 public class ProdutoDTO {
-    private int codigo;
+  private int codigo;
   private String descricao;
   private double preco;
-  private int qtdade;
+  private int quantidade;
   private String urlImagem;
   private String situacao;
 
@@ -21,7 +21,7 @@ public class ProdutoDTO {
   }
 
   public int getQtdade() {
-    return qtdade;
+    return quantidade;
   }
 
   public String getUrlImagem() {
@@ -32,8 +32,8 @@ public class ProdutoDTO {
     return situacao;
   }
 
-  public void saidaDeProduto(int qtdade) {
-    this.qtdade -= qtdade;
+  public void saidaDeProduto(int quantidade) {
+    this.quantidade -= quantidade;
   }
 
   public void setPreco(double preco) {
@@ -63,8 +63,8 @@ public class ProdutoDTO {
     return this;
   }
 
-  public ProdutoDTO withQuantidade(int qtdade) {
-    this.qtdade = qtdade;
+  public ProdutoDTO withQuantidade(int quantidade) {
+    this.quantidade = quantidade;
     return this;
   }
 
