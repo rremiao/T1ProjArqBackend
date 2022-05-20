@@ -7,7 +7,6 @@ public class VendaDTO {
     private double frete;
     private double imposto;
     private double desconto;
-    private List<ProdutoDTO> listaProdutos;
     private List<ItemCarrinhoDTO> itemsCarrinho;
     private double valorTotal;
     private EnderecoDTO endereco;
@@ -42,14 +41,6 @@ public class VendaDTO {
 
       public void setDesconto(double desconto) {
           this.desconto = desconto;
-      }
-
-      public List<ProdutoDTO> getListaProdutos() {
-          return listaProdutos;
-      }
-
-      public void setListaProdutos(List<ProdutoDTO> listaProdutos) {
-          this.listaProdutos = listaProdutos;
       }
 
       public List<ItemCarrinhoDTO> getItemsCarrinho() {
@@ -93,11 +84,6 @@ public class VendaDTO {
 
       public VendaDTO withDesconto(double desconto) {
           this.desconto = desconto;
-          return this;
-      }
-
-      public VendaDTO withListaProdutos(List<ProdutoDTO> listaProdutos) {
-          this.listaProdutos = listaProdutos;
           return this;
       }
 

@@ -1,11 +1,34 @@
 package com.bcopstein.business.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity(name = "Produto")
+@Table(name = "produto")
 public class Produto {
+
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "codigo")
   private int codigo;
+
+  @Column(name = "descricao")
   private String descricao;
+
+  @Column(name = "preco")
   private double preco;
+
+  @Column(name = "quantidade")
   private int qtdade;
+
+  @Column(name = "urlImagem")
   private String urlImagem;
+
+  @Column(name = "situacao")
   private String situacao;
 
   public Produto(int codigo, String descricao, double preco, int qtdade, String urlImagem, String situacao) {

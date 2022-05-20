@@ -1,8 +1,24 @@
 package com.bcopstein.business.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity(name = "estoque")
+@Table(name = "estoque")
 public class Estoque {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
+
+    @Column(name = "estoqueMinimo")
     private int estoqueMinimo;
+
+    @Column(name = "idProduto")
     private int idProduto;
 
     public Estoque(int id, int estoqueMinimo, int idProduto) {

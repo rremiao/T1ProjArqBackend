@@ -2,25 +2,47 @@ package com.bcopstein.business.entity;
 
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import com.bcopstein.business.dto.EnderecoDTO;
 
+@Entity(name = "Venda")
+@Table(name="venda")
 public class Venda {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
+
+    @Column(name = "frete")
     private double frete;
+
+    @Column(name = "imposto")
     private double imposto;
+
+    @Column(name = "desconto")
     private double desconto;
-    private List<Produto> listaProdutos;
+
+    @Column(name = "itemsCarinho")
     private List<ItemCarrinho> itemsCarrinho;
+
+    @Column(name = "valor")
     private double valorTotal;
+
+    @Column(name = "endereco")
     private EnderecoDTO endereco;
 
-    public Venda(int id, double frete, double imposto, double desconto, 
-                        List<Produto> listaProdutos, List<ItemCarrinho> itemsCarrinho, double valorTotal, EnderecoDTO endereco) {
+    public Venda(int id, double frete, double imposto, double desconto, List<ItemCarrinho> itemsCarrinho, double valorTotal, EnderecoDTO endereco) {
         this.id = id;
         this.frete = frete;
         this.imposto = imposto;
         this.desconto = desconto;
-        this.listaProdutos = listaProdutos;
         this.itemsCarrinho = itemsCarrinho;
         this.valorTotal = valorTotal;
         this.endereco = endereco;
@@ -56,14 +78,6 @@ public class Venda {
 
       public void setDesconto(double desconto) {
           this.desconto = desconto;
-      }
-
-      public List<Produto> getListaProdutos() {
-          return listaProdutos;
-      }
-
-      public void setListaProdutos(List<Produto> listaProdutos) {
-          this.listaProdutos = listaProdutos;
       }
 
       public List<ItemCarrinho> getItemsCarrinho() {
@@ -107,11 +121,6 @@ public class Venda {
 
       public Venda withDesconto(double desconto) {
           this.desconto = desconto;
-          return this;
-      }
-
-      public Venda withListaProdutos(List<Produto> listaProdutos) {
-          this.listaProdutos = listaProdutos;
           return this;
       }
 
