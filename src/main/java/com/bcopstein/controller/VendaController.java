@@ -8,7 +8,7 @@ import java.util.Map;
 import com.bcopstein.business.dto.ItemCarrinhoDTO;
 import com.bcopstein.business.dto.ParamSubtotal_DTO;
 import com.bcopstein.business.dto.PrecosDTO;
-import com.bcopstein.business.entity.Produto;
+import com.bcopstein.business.dto.ProdutoDTO;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -21,7 +21,7 @@ import org.springframework.web.server.ResponseStatusException;
 @RestController
 @RequestMapping("/vendas")
 public class VendaController {
-  private final List<Produto> produtos;
+  private final List<ProdutoDTO> produtos;
   private final List<String> vendasEfetuadas;
   private final Map<String,Integer> cacheFrete; 
 
@@ -30,11 +30,7 @@ public class VendaController {
     cacheFrete = new HashMap<>();
     // Cria e carrega o estoque
     produtos = new ArrayList<>();
-    produtos.add(new Produto(10, "Geladeira", 2500.0, 10, "ata", "A"));
-    produtos.add(new Produto(20, "Fogao", 1200.0, 0, "ata", "A"));
-    produtos.add(new Produto(30, "Lava louça", 4300.0, 7, "ata", "A"));
-    produtos.add(new Produto(40, "Lava roupa", 3350.0, 11, "ata", "A"));
-    produtos.add(new Produto(50, "Aspirador de pó", 780.0, 22, "ata", "A"));
+
 
     // Cria a lista de vendas efetuadas
     vendasEfetuadas = new ArrayList<>();
@@ -44,11 +40,11 @@ public class VendaController {
   @CrossOrigin(origins = "*")
   public boolean confirmaVenda(@RequestBody final List<ItemCarrinhoDTO> itens) {
 
-    ArrayList<Produto> listaProdutos = new ArrayList<>();
+    ArrayList<ProdutoDTO> listaProdutos = new ArrayList<>();
     ArrayList<Integer> listaQtdades = new ArrayList<>();
 
     for (ItemCarrinhoDTO item : itens) {
-      final Produto produto =
+      final ProdutoDTO produto =
           produtos.stream().filter(p -> p.getCodigo() == item.getCodigo()).findAny().orElse(null);
 
       if (produto == null) {
@@ -62,7 +58,7 @@ public class VendaController {
     StringBuilder builder = new StringBuilder();
 
     for (int i = 0; i < listaProdutos.size(); i++) {
-      final Produto produto = listaProdutos.get(i);
+      final ProdutoDTO produto = listaProdutos.get(i);
       final int qtdade = listaQtdades.get(i);
       produto.saidaDeProduto(qtdade);
 
@@ -101,7 +97,7 @@ public class VendaController {
 
     for (final ItemCarrinhoDTO it : param.getItens()) {
       // Procurar o produto pelo código
-      final Produto prod =
+      final ProdutoDTO prod =
           produtos.stream().filter(p -> p.getCodigo() == it.getCodigo()).findAny().orElse(null);
 
       if (prod != null) {
