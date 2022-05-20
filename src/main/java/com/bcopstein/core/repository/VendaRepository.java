@@ -59,7 +59,7 @@ public class VendaRepository implements IVendaRepository {
         Integer imposto = 0;
         PrecosDTO response = new PrecosDTO();
         ArrayList<ProdutoDTO> produtos = new ArrayList<>();
-        Map<String,Integer> cacheFrete = new HashMap(); 
+        Map<String,Integer> cacheFrete = new HashMap<String,Integer>(); 
         
         System.out.println(param.getEndereco());
 
