@@ -1,9 +1,11 @@
 package com.bcopstein.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import javax.ejb.EJB;
+
 import com.bcopstein.business.dto.ProdutoDTO;
+import com.bcopstein.core.services.ProdutoService;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,20 +16,19 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/produtos")
 public class ProdutoController {
-    private List<ProdutoDTO> produtos;
+    @EJB
+    ProdutoService produtoService;
 
     @GetMapping("/")
     @CrossOrigin(origins = "*")
     public List<ProdutoDTO> listaProdutos() {
-      return new ArrayList<ProdutoDTO>();
+      return produtoService.listaProdutos();
     }
 
     @GetMapping("/autorizacao")
     @CrossOrigin(origins = "*")
     public boolean podeVender(@RequestParam final Integer codigo,
                               @RequestParam final Integer quantidade) {
-      final boolean disponivel = produtos.stream().anyMatch(p -> p.getCodigo() == codigo 
-                                    && p.getSituacao().equals("A"));
-      return disponivel;
+      return produtoService.podeVender(codigo, quantidade);
     }
 }
