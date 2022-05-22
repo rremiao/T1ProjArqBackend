@@ -6,6 +6,9 @@ import java.util.List;
 import com.bcopstein.business.dto.ProdutoDTO;
 import com.bcopstein.business.interfaces.IProdutoRepository;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class ProdutoRepository implements IProdutoRepository {
 
     public List<ProdutoDTO> listaProdutos() {

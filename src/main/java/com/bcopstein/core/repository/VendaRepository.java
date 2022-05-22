@@ -11,9 +11,9 @@ import com.bcopstein.business.dto.ParamSubtotal_DTO;
 import com.bcopstein.business.dto.PrecosDTO;
 import com.bcopstein.business.dto.ProdutoDTO;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.web.server.ResponseStatusException;
+import org.springframework.stereotype.Component;
 
+@Component
 public class VendaRepository implements IVendaRepository {
 
     public boolean confirmaVenda(final List<ItemCarrinhoDTO> itens) {
@@ -63,12 +63,6 @@ public class VendaRepository implements IVendaRepository {
         
         System.out.println(param.getEndereco());
 
-        // Verifica se o endereço é invalido
-        if (param.getEndereco() == null ||
-                param.getEndereco().isEmpty() ||
-                param.getEndereco().isBlank()) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Endereco invalido");
-        }
         // Verifica se o endereço já está na cache
         if (!cacheFrete.keySet().contains(param.getEndereco())) {
             // Calcula o frete
