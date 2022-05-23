@@ -8,7 +8,7 @@ import com.bcopstein.business.dto.PrecosDTO;
 
 public interface IVendaRepository {
 
-    boolean confirmaVenda(final List<ItemCarrinhoDTO> itens);
+    public boolean confirmaVenda(final List<ItemCarrinhoDTO> itens);
     
-    PrecosDTO calculaSubtotal(final ParamSubtotal_DTO param);
+    public PrecosDTO calculaSubtotal(final ParamSubtotal_DTO param);
 }
