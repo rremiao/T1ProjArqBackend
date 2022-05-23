@@ -14,7 +14,7 @@ import com.bcopstein.business.dto.ProdutoDTO;
 import org.springframework.stereotype.Component;
 
 @Component
-public class VendaRepository implements IVendaRepository {
+public abstract class VendaRepository implements IVendaRepository {
 
     public boolean confirmaVenda(final List<ItemCarrinhoDTO> itens) {
 

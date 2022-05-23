@@ -4,15 +4,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.bcopstein.business.dto.ProdutoDTO;
+import com.bcopstein.business.entity.Produto;
 import com.bcopstein.business.interfaces.IProdutoRepository;
 
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ProdutoRepository implements IProdutoRepository {
+public abstract class ProdutoRepository implements IProdutoRepository  {
 
+    @Query(value = "SELECT * from vendas")
     public List<ProdutoDTO> listaProdutos() {
-        return new ArrayList<ProdutoDTO>();
+        Iterable<Produto> produtos = this.findAll();
+        List<ProdutoDTO> response = new ArrayList<ProdutoDTO>();
+
+        for(Produto prod : produtos) {
+            ProdutoDTO produto = new ProdutoDTO();
+
+            produto.withCodigo(prod.getCodigo());
+
+            response.add(produto);
+        }
+        return response;
     }
 
     public boolean podeVender(Integer codigo, Integer quantidade) {
@@ -22,6 +35,4 @@ public class ProdutoRepository implements IProdutoRepository {
                                     && p.getSituacao().equals("A"));
         return disponivel;
     }
-    
-    
 }
