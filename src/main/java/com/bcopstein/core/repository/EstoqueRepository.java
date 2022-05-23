@@ -5,6 +5,6 @@ import com.bcopstein.business.interfaces.IEstoqueRepository;
 import org.springframework.stereotype.Component;
 
 @Component
-public class EstoqueRepository implements IEstoqueRepository {
+public abstract class EstoqueRepository implements IEstoqueRepository {
     
 }

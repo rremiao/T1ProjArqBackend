@@ -1,5 +1,9 @@
 package com.bcopstein.business.interfaces;
 
-public interface IEstoqueRepository {
+import com.bcopstein.business.entity.Estoque;
+
+import org.springframework.data.repository.CrudRepository;
+
+public interface IEstoqueRepository extends CrudRepository<Estoque, Integer> {
     
 }
