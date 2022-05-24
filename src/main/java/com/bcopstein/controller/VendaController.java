@@ -3,8 +3,6 @@ package com.bcopstein.controller;
 
 import java.util.List;
 
-import javax.ejb.EJB;
-
 import com.bcopstein.business.dto.ItemCarrinhoDTO;
 import com.bcopstein.business.dto.ParamSubtotal_DTO;
 import com.bcopstein.business.dto.PrecosDTO;
@@ -24,7 +22,6 @@ import org.springframework.web.server.ResponseStatusException;
 @RequestMapping("/vendas")
 public class VendaController {
 
-  @EJB
   VendaService vendaService;
 
   @PostMapping("/confirmacao")

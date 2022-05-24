@@ -2,8 +2,6 @@ package com.bcopstein.controller;
 
 import java.util.List;
 
-import javax.ejb.EJB;
-
 import com.bcopstein.business.dto.ProdutoDTO;
 import com.bcopstein.core.services.ProdutoService;
 
@@ -16,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/produtos")
 public class ProdutoController {
-    @EJB
+
     ProdutoService produtoService;
 
     @GetMapping("/")

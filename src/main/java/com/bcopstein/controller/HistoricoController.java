@@ -2,7 +2,6 @@ package com.bcopstein.controller;
 
 import java.util.List;
 
-import javax.ejb.EJB;
 
 import com.bcopstein.core.services.HistoricoService;
 
@@ -16,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/historico")
 public class HistoricoController {
 
-    @EJB
     HistoricoService historicoService;
 
     @GetMapping("/")

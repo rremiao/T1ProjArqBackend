@@ -7,9 +7,9 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"com.bcopstein"})
-@EnableJpaRepositories(basePackages = {"com.bcopstein"})
-@EntityScan(basePackages = {"com.bcopstein"}) 
+@ComponentScan(basePackages = {"com.bcopstein.core.repository"})
+@EnableJpaRepositories(basePackages = {"com.bcopstein.core.repository"})
+@EntityScan(basePackages = {"com.bcopstein.business.entity"}) 
 public class SvBkPrototipo {
   public static void main(String[] args) {
     SpringApplication.run(SvBkPrototipo.class, args);

@@ -1,6 +1,8 @@
 package com.bcopstein.business.entity;
 
-public class ItemCarrinho {
+import java.io.Serializable;
+
+public class ItemCarrinho implements Serializable {
   private int codigo;
   private int quantidade;
   private Produto produto;

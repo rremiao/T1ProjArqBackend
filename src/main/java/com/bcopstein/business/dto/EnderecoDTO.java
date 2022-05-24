@@ -1,6 +1,8 @@
 package com.bcopstein.business.dto;
 
-public class EnderecoDTO {
+import java.io.Serializable;
+
+public class EnderecoDTO implements Serializable {
     private String logradouro;
     private int numero;
     private String complemento;

@@ -1,7 +1,5 @@
 package com.bcopstein.business.entity;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -29,8 +27,8 @@ public class Venda {
     @Column(name = "desconto")
     private double desconto;
 
-    @Column(name = "itemsCarinho")
-    private List<ItemCarrinho> itemsCarrinho;
+    @Column(name = "itemsCarrinho")
+    private String itemsCarrinhoJson;
 
     @Column(name = "valor")
     private double valorTotal;
@@ -38,12 +36,12 @@ public class Venda {
     @Column(name = "endereco")
     private EnderecoDTO endereco;
 
-    public Venda(int id, double frete, double imposto, double desconto, List<ItemCarrinho> itemsCarrinho, double valorTotal, EnderecoDTO endereco) {
+    public Venda(int id, double frete, double imposto, double desconto, String itemsCarrinhoJson, double valorTotal, EnderecoDTO endereco) {
         this.id = id;
         this.frete = frete;
         this.imposto = imposto;
         this.desconto = desconto;
-        this.itemsCarrinho = itemsCarrinho;
+        this.itemsCarrinhoJson = itemsCarrinhoJson;
         this.valorTotal = valorTotal;
         this.endereco = endereco;
       }
@@ -80,14 +78,6 @@ public class Venda {
           this.desconto = desconto;
       }
 
-      public List<ItemCarrinho> getItemsCarrinho() {
-          return itemsCarrinho;
-      }
-
-      public void setItemsCarrinhos(List<ItemCarrinho> itemsCarrinho) {
-          this.itemsCarrinho = itemsCarrinho;
-      }
-
       public double getValorTotal() {
           return valorTotal;
       }
@@ -121,11 +111,6 @@ public class Venda {
 
       public Venda withDesconto(double desconto) {
           this.desconto = desconto;
-          return this;
-      }
-
-      public Venda withItemsCarrinho(List<ItemCarrinho> itemsCarrinho) {
-          this.itemsCarrinho = itemsCarrinho;
           return this;
       }
 

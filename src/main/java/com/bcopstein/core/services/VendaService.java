@@ -2,7 +2,7 @@ package com.bcopstein.core.services;
 
 import java.util.List;
 
-import javax.inject.Inject;
+import javax.ejb.EJB;
 
 import com.bcopstein.core.repository.VendaRepository;
 
@@ -14,7 +14,7 @@ import com.bcopstein.business.dto.PrecosDTO;
 
 public class VendaService {
     
-    @Inject
+    @EJB
     VendaRepository vendaRepository;
 
     @Autowired

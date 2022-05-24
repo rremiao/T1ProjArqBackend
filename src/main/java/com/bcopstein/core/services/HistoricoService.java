@@ -2,15 +2,17 @@ package com.bcopstein.core.services;
 
 import java.util.List;
 
-import javax.inject.Inject;
+import javax.ejb.EJB;
 
 import com.bcopstein.core.repository.HistoricoRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class HistoricoService {
 
-    @Inject
+    @EJB
     HistoricoRepository historicoRepository;
 
     @Autowired
