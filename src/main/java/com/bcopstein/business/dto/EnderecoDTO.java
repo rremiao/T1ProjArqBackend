@@ -21,6 +21,10 @@ public class EnderecoDTO implements Serializable {
         this.bairro = bairro;
     }
 
+    public EnderecoDTO(){
+        
+    }
+
     public String getLogradouro() {
         return this.logradouro;
     }

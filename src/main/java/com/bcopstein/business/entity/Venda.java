@@ -27,7 +27,7 @@ public class Venda {
     @Column(name = "desconto")
     private double desconto;
 
-    @Column(name = "itemsCarrinho")
+    @Column(name = "items_carrinho")
     private String itemsCarrinhoJson;
 
     @Column(name = "valor")
@@ -44,83 +44,100 @@ public class Venda {
         this.itemsCarrinhoJson = itemsCarrinhoJson;
         this.valorTotal = valorTotal;
         this.endereco = endereco;
-      }
+    }
 
-      public int getId() {
-          return id;
-      }
+    public Venda() {
 
-      public void setId(int id) {
-          this.id = id;
-      }
+    }
 
-      public double getFrete() {
-          return frete;
-      }
+    public int getId() {
+        return id;
+    }
 
-      public void setFrete(double frete) {
-          this.frete = frete;
-      }
+    public void setId(int id) {
+        this.id = id;
+    }
 
-      public double getImposto() {
-          return imposto;
-      }
+    public double getFrete() {
+        return frete;
+    }
 
-      public void setImposto(double imposto) {
-          this.imposto = imposto;
-      }
+    public void setFrete(double frete) {
+        this.frete = frete;
+    }
 
-      public double getDesconto() {
-          return desconto;
-      }
+    public double getImposto() {
+        return imposto;
+    }
 
-      public void setDesconto(double desconto) {
-          this.desconto = desconto;
-      }
+    public void setImposto(double imposto) {
+        this.imposto = imposto;
+    }
 
-      public double getValorTotal() {
-          return valorTotal;
-      }
+    public double getDesconto() {
+        return desconto;
+    }
 
-      public void setValorTotal(double valorTotal) {
-          this.valorTotal = valorTotal;
-      }
+    public void setDesconto(double desconto) {
+        this.desconto = desconto;
+    }
 
-      public EnderecoDTO getEndereco() {
-          return endereco;
-      }
+    public double getValorTotal() {
+        return valorTotal;
+    }
 
-      public void setEndereco(EnderecoDTO endereco) {
-          this.endereco = endereco;
-      }
+    public void setValorTotal(double valorTotal) {
+        this.valorTotal = valorTotal;
+    }
 
-      public Venda withId(int id) {
+    public EnderecoDTO getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(EnderecoDTO endereco) {
+        this.endereco = endereco;
+    }
+
+    public String getItemsCarrinhoJson() {
+        return this.itemsCarrinhoJson;
+    }
+
+    public void setItemsCarrinhoJson(String itemsCarrinhoJson) {
+        this.itemsCarrinhoJson = itemsCarrinhoJson;
+    }
+
+    public Venda withId(int id) {
         this.id = id;
         return this;
-      }
+    }
 
-      public Venda withFrete(double frete) {
-          this.frete = frete;
-          return this;
-      }
+    public Venda withFrete(double frete) {
+        this.frete = frete;
+        return this;
+    }
 
-      public Venda withImposto(double imposto) {
-          this.imposto = imposto;
-          return this;
-      }
+    public Venda withImposto(double imposto) {
+        this.imposto = imposto;
+        return this;
+    }
 
-      public Venda withDesconto(double desconto) {
-          this.desconto = desconto;
-          return this;
-      }
+    public Venda withDesconto(double desconto) {
+        this.desconto = desconto;
+        return this;
+    }
 
-      public Venda withValorTotal(double valorTotal) {
-          this.valorTotal = valorTotal;
-          return this;
-      }
+    public Venda withValorTotal(double valorTotal) {
+        this.valorTotal = valorTotal;
+        return this;
+    }
 
-      public Venda withEndereco(EnderecoDTO endereco) {
-          this.endereco = endereco;
-          return this;
-      }
+    public Venda withEndereco(EnderecoDTO endereco) {
+        this.endereco = endereco;
+        return this;
+    }
+
+    public Venda withItemsCarrinhoJson(String itemsCarrinhoJson) {
+        this.itemsCarrinhoJson = itemsCarrinhoJson;
+        return this;
+    }
 }

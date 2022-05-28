@@ -2,8 +2,12 @@ package com.bcopstein.business.interfaces;
 
 import com.bcopstein.business.dto.ProdutoDTO;
 
-public interface ICalculaImposto {
-    public double calculaImpostoSimples(ProdutoDTO produto);
+import java.util.List;
 
-    public double calculaImpostoComposto(ProdutoDTO produto);
+public interface ICalculaImposto {
+    public double calculaImpostoSimples(List<ProdutoDTO> produto);
+
+    public double calculaImpostoComposto(List<ProdutoDTO> produto);
+
+    public int calculaImpostoSubtotal(double subtotal);
 }

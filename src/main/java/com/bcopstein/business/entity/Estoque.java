@@ -15,10 +15,10 @@ public class Estoque {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "estoqueMinimo")
+    @Column(name = "estoque_minimo")
     private int estoqueMinimo;
 
-    @Column(name = "idProduto")
+    @Column(name = "id_produto")
     private int idProduto;
 
     public Estoque(int id, int estoqueMinimo, int idProduto) {
