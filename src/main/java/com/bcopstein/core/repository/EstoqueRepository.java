@@ -2,9 +2,9 @@ package com.bcopstein.core.repository;
 
 import com.bcopstein.business.interfaces.IEstoqueRepository;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
-@Component
+@Repository
 public abstract class EstoqueRepository implements IEstoqueRepository {
     
 }

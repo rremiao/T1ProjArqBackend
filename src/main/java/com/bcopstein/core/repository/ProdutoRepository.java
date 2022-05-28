@@ -2,27 +2,36 @@ package com.bcopstein.core.repository;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Optional;
 
 import com.bcopstein.business.dto.ProdutoDTO;
 import com.bcopstein.business.entity.Produto;
 import com.bcopstein.business.interfaces.IProdutoRepository;
+import com.bcopstein.core.implementation.ProdutoOperationRepository;
 
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
-@Component
-public abstract class ProdutoRepository implements IProdutoRepository  {
+@Repository
+public class ProdutoRepository implements IProdutoRepository  {
 
-    @Query(value = "SELECT * from vendas")
+    @Autowired
+    ProdutoOperationRepository operationRepository;
+
     public List<ProdutoDTO> listaProdutos() {
-        Iterable<Produto> produtos = this.findAll();
+        Iterable<Produto> produtos = operationRepository.findAll();
+
         List<ProdutoDTO> response = new ArrayList<ProdutoDTO>();
 
         for(Produto prod : produtos) {
             ProdutoDTO produto = new ProdutoDTO();
 
-            produto.withCodigo(prod.getCodigo());
+            produto.withCodigo(prod.getCodigo())
+                   .withDescricao(prod.getDescricao())
+                   .withPreco(prod.getPreco())
+                   .withQuantidade(prod.getQtdade())
+                   .withUrlImagem(prod.getUrlImagem())
+                   .withSituacao(prod.getSituacao());
 
             response.add(produto);
         }
@@ -35,5 +44,21 @@ public abstract class ProdutoRepository implements IProdutoRepository  {
         final boolean disponivel = produtos.stream().anyMatch(p -> p.getCodigo() == codigo 
                                     && p.getSituacao().equals("A"));
         return disponivel;
+    }
+
+    public ProdutoDTO buscaProduto(Integer codigo) {
+        Optional<Produto> prod = operationRepository.findById(codigo);
+        Produto produto = prod.get();
+
+        ProdutoDTO response = new ProdutoDTO();
+
+        response.withCodigo(produto.getCodigo())
+                .withDescricao(produto.getDescricao())
+                .withPreco(produto.getPreco())
+                .withQuantidade(produto.getQtdade())
+                .withSituacao(produto.getSituacao())
+                .withUrlImagem(produto.getUrlImagem());
+
+        return response;
     }
 }

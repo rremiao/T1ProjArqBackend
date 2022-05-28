@@ -2,9 +2,9 @@ package com.bcopstein.core.repository;
 
 import com.bcopstein.business.interfaces.ISedeRepository;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
-@Component
+@Repository
 public class SedeRepository implements ISedeRepository {
     
 }

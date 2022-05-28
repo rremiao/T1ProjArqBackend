@@ -5,6 +5,7 @@ import java.util.List;
 import com.bcopstein.business.dto.ProdutoDTO;
 import com.bcopstein.core.services.ProdutoService;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,7 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/produtos")
 public class ProdutoController {
 
-    ProdutoService produtoService;
+    @Autowired
+    private ProdutoService produtoService;
 
     @GetMapping("/")
     @CrossOrigin(origins = "*")
@@ -29,4 +31,11 @@ public class ProdutoController {
                               @RequestParam final Integer quantidade) {
       return produtoService.podeVender(codigo, quantidade);
     }
+
+    @GetMapping("/buscaProduto")
+    @CrossOrigin(origins = "*")
+    public ProdutoDTO buscaProduto(@RequestParam(name = "codigo") Integer codigo) {
+        return produtoService.buscaProduto(codigo);
+    }
+  
 }

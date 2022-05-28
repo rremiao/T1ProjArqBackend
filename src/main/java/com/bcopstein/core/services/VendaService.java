@@ -2,27 +2,25 @@ package com.bcopstein.core.services;
 
 import java.util.List;
 
-import javax.ejb.EJB;
-
 import com.bcopstein.core.repository.VendaRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.bcopstein.business.dto.ItemCarrinhoDTO;
 import com.bcopstein.business.dto.ParamSubtotal_DTO;
 import com.bcopstein.business.dto.PrecosDTO;
 
+@Service
 public class VendaService {
     
-    @EJB
+    @Autowired
     VendaRepository vendaRepository;
 
-    @Autowired
     public boolean confirmaVenda(final List<ItemCarrinhoDTO> itens) {
         return vendaRepository.confirmaVenda(itens);
     }
 
-    @Autowired
     public PrecosDTO calculaSubtotal(final ParamSubtotal_DTO param) {
         return vendaRepository.calculaSubtotal(param);
     }

@@ -6,16 +6,21 @@ import java.util.List;
 import java.util.Map;
 
 import com.bcopstein.business.interfaces.IVendaRepository;
+import com.bcopstein.core.implementation.VendaOperationRepository;
 import com.bcopstein.business.dto.ItemCarrinhoDTO;
 import com.bcopstein.business.dto.ParamSubtotal_DTO;
 import com.bcopstein.business.dto.PrecosDTO;
 import com.bcopstein.business.dto.ProdutoDTO;
 
-import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
-@Component
-public abstract class VendaRepository implements IVendaRepository {
+@Repository
+public class VendaRepository implements IVendaRepository {
 
+    @Autowired
+    VendaOperationRepository vendaOperationRepository;
+    
     public boolean confirmaVenda(final List<ItemCarrinhoDTO> itens) {
 
         ArrayList<ProdutoDTO> listaProdutos = new ArrayList<>();

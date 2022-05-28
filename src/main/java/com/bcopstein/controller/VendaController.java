@@ -9,6 +9,7 @@ import com.bcopstein.business.dto.PrecosDTO;
 
 import com.bcopstein.core.services.VendaService;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,6 +23,7 @@ import org.springframework.web.server.ResponseStatusException;
 @RequestMapping("/vendas")
 public class VendaController {
 
+  @Autowired
   VendaService vendaService;
 
   @PostMapping("/confirmacao")

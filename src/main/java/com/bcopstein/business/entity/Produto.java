@@ -7,8 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Entity(name = "Produto")
-@Table(name = "produto")
+@Entity
+@Table(name = "produtos")
 public class Produto {
 
   @Id
@@ -25,7 +25,7 @@ public class Produto {
   @Column(name = "quantidade")
   private int qtdade;
 
-  @Column(name = "urlImagem")
+  @Column(name = "url_imagem")
   private String urlImagem;
 
   @Column(name = "situacao")
@@ -38,6 +38,10 @@ public class Produto {
     this.qtdade = qtdade;
     this.urlImagem = urlImagem;
     this.situacao = situacao;
+  }
+
+  public Produto() {
+
   }
 
   public int getCodigo() {

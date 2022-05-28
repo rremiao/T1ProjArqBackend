@@ -1,9 +1,9 @@
 package com.bcopstein.core.services;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class BingIntegrationService {
 
-    @Autowired
     public double calculoFreteBing(String cepDestino, String cepSede) {
         return 0.0;
     }
