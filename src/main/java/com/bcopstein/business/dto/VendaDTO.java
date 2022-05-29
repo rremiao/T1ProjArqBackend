@@ -1,13 +1,11 @@
 package com.bcopstein.business.dto;
 
-import java.util.List;
-
 public class VendaDTO {
     private int id;
     private double frete;
     private double imposto;
     private double desconto;
-    private List<ItemCarrinhoDTO> itemsCarrinho;
+    private String itemsCarrinho;
     private double valorTotal;
     private EnderecoDTO endereco;
 
@@ -43,11 +41,11 @@ public class VendaDTO {
           this.desconto = desconto;
       }
 
-      public List<ItemCarrinhoDTO> getItemsCarrinho() {
+      public String getItemsCarrinho() {
           return itemsCarrinho;
       }
 
-      public void setItemsCarrinhos(List<ItemCarrinhoDTO> itemsCarrinho) {
+      public void setItemsCarrinhos(String itemsCarrinho) {
           this.itemsCarrinho = itemsCarrinho;
       }
 
@@ -87,7 +85,7 @@ public class VendaDTO {
           return this;
       }
 
-      public VendaDTO withItemsCarrinho(List<ItemCarrinhoDTO> itemsCarrinho) {
+      public VendaDTO withItemsCarrinho(String itemsCarrinho) {
           this.itemsCarrinho = itemsCarrinho;
           return this;
       }

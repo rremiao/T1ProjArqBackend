@@ -2,7 +2,7 @@ package com.bcopstein.core.services;
 
 import java.util.List;
 
-
+import com.bcopstein.business.dto.VendaDTO;
 import com.bcopstein.core.repository.HistoricoRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +14,7 @@ public class HistoricoService {
     @Autowired
     HistoricoRepository historicoRepository;
 
-    public List<String> vendasEfetuadas() {
+    public List<VendaDTO> vendasEfetuadas() {
         return historicoRepository.vendasEfetuadas();
     }
 }

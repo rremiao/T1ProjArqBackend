@@ -18,6 +18,7 @@ import com.bcopstein.business.dto.ItemCarrinhoDTO;
 import com.bcopstein.business.dto.ParamSubtotal_DTO;
 import com.bcopstein.business.dto.PrecosDTO;
 import com.bcopstein.business.dto.ProdutoDTO;
+import com.bcopstein.business.dto.VendaDTO;
 import com.bcopstein.business.dto.EnderecoDTO;
 import com.bcopstein.business.entity.Venda;
 
@@ -130,6 +131,28 @@ public class VendaRepository implements IVendaRepository {
                 .withTotal(subtotal + imposto + frete);
 
         return response;
+    }
+
+    public List<VendaDTO> listaVenda() {
+        List<Venda> listaDeVendas = vendaOperationRepository.findAll();
+        List<VendaDTO> lista = new ArrayList<>();
+
+        for(Venda venda : listaDeVendas) {
+            VendaDTO vnda = new VendaDTO();
+
+            vnda.withId(venda.getId())
+                    .withFrete(venda.getFrete())
+                    .withImposto(venda.getImposto())
+                    .withDesconto(venda.getDesconto())
+                    .withItemsCarrinho(venda.getItemsCarrinhoJson())
+                    .withValorTotal(venda.getValorTotal())
+                    .withEndereco(venda.getEndereco());
+            
+            lista.add(vnda);
+        }
+
+
+        return lista;
     }
 
 

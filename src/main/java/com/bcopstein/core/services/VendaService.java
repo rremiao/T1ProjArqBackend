@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.bcopstein.business.dto.ItemCarrinhoDTO;
 import com.bcopstein.business.dto.ParamSubtotal_DTO;
 import com.bcopstein.business.dto.PrecosDTO;
+import com.bcopstein.business.dto.VendaDTO;
 
 @Service
 public class VendaService {
@@ -23,6 +24,10 @@ public class VendaService {
 
     public PrecosDTO calculaSubtotal(final ParamSubtotal_DTO param) {
         return vendaRepository.calculaSubtotal(param);
+    }
+
+    public List<VendaDTO> listaVendas() {
+        return vendaRepository.listaVenda();
     }
 
 }

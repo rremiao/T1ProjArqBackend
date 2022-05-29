@@ -2,7 +2,7 @@ package com.bcopstein.controller;
 
 import java.util.List;
 
-
+import com.bcopstein.business.dto.VendaDTO;
 import com.bcopstein.core.services.HistoricoService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,7 @@ public class HistoricoController {
 
     @GetMapping("/")
     @CrossOrigin(origins = "*")
-    public List<String> vendasEfetuadas() {
+    public List<VendaDTO> vendasEfetuadas() {
       return historicoService.vendasEfetuadas();
     }
 }
