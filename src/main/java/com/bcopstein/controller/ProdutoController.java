@@ -19,7 +19,7 @@ public class ProdutoController {
     @Autowired
     private ProdutoService produtoService;
 
-    @GetMapping("/")
+    @GetMapping()
     @CrossOrigin(origins = "*")
     public List<ProdutoDTO> listaProdutos() {
       return produtoService.listaProdutos();
