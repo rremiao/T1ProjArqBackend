@@ -1,14 +1,15 @@
 package com.bcopstein.core.implementation;
 
-import javax.ejb.EJB;
 
 import com.bcopstein.business.dto.EnderecoDTO;
 import com.bcopstein.business.interfaces.ICalculaFrete;
 import com.bcopstein.core.services.BingIntegrationService;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 public class CalculaFreteImpl implements ICalculaFrete {
 
-    @EJB
+    @Autowired
     BingIntegrationService integrationService;
 
     public double calculaFreteSimples(EnderecoDTO enderecoDestino, EnderecoDTO enderecoSede) {
