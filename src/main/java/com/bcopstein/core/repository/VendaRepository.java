@@ -9,14 +9,14 @@ import com.bcopstein.core.implementation.VendaOperationRepository;
 import com.bcopstein.core.implementation.CalculaFreteImpl;
 import com.bcopstein.core.implementation.CalculaImpostoImpl;
 import com.bcopstein.core.implementation.CalculaLimiteHorarioImpl;
-
+import com.bcopstein.core.services.EnderecoService;
 import com.bcopstein.core.services.ProdutoService;
+import com.bcopstein.business.dto.EnderecoDTO;
 import com.bcopstein.business.dto.ItemCarrinhoDTO;
 import com.bcopstein.business.dto.ParamSubtotal_DTO;
 import com.bcopstein.business.dto.PrecosDTO;
 import com.bcopstein.business.dto.ProdutoDTO;
 import com.bcopstein.business.dto.VendaDTO;
-import com.bcopstein.business.dto.EnderecoDTO;
 import com.bcopstein.business.entity.Venda;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +42,9 @@ public class VendaRepository implements IVendaRepository {
 
     @Autowired
     CalculaLimiteHorarioImpl calculaLimiteHorario;
+
+    @Autowired
+    EnderecoService enderecoService;
 
     
     public boolean confirmaVenda(final List<ItemCarrinhoDTO> itens) {
@@ -84,7 +87,7 @@ public class VendaRepository implements IVendaRepository {
                      .withImposto(calculaImposto.calculaImpostoSimples(produtos))
                      .withValorTotal(calculaValorTotal(itens))
                      .withFrete(25)
-                     .withEndereco(new EnderecoDTO())
+                     .withEndereco(1)
                      .withItemsCarrinhoJson(mapearJson(itens));
         
         vendaOperationRepository.save(venda);
@@ -133,6 +136,7 @@ public class VendaRepository implements IVendaRepository {
 
         for(Venda venda : listaDeVendas) {
             VendaDTO vnda = new VendaDTO();
+            EnderecoDTO addr = enderecoService.buscaEndereco(venda.getEndereco());
 
             vnda.withId(venda.getId())
                     .withFrete(venda.getFrete())
@@ -140,7 +144,7 @@ public class VendaRepository implements IVendaRepository {
                     .withDesconto(venda.getDesconto())
                     .withItemsCarrinho(venda.getItemsCarrinhoJson())
                     .withValorTotal(venda.getValorTotal())
-                    .withEndereco(venda.getEndereco());
+                    .withEndereco(addr);
             
             lista.add(vnda);
         }

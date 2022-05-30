@@ -7,7 +7,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.bcopstein.business.dto.EnderecoDTO;
 
 @Entity(name = "Venda")
 @Table(name="venda")
@@ -34,9 +33,9 @@ public class Venda {
     private double valorTotal;
 
     @Column(name = "endereco")
-    private EnderecoDTO endereco;
+    private int endereco;
 
-    public Venda(int id, double frete, double imposto, double desconto, String itemsCarrinhoJson, double valorTotal, EnderecoDTO endereco) {
+    public Venda(int id, double frete, double imposto, double desconto, String itemsCarrinhoJson, double valorTotal, int endereco) {
         this.id = id;
         this.frete = frete;
         this.imposto = imposto;
@@ -90,11 +89,11 @@ public class Venda {
         this.valorTotal = valorTotal;
     }
 
-    public EnderecoDTO getEndereco() {
+    public int getEndereco() {
         return endereco;
     }
 
-    public void setEndereco(EnderecoDTO endereco) {
+    public void setEndereco(int endereco) {
         this.endereco = endereco;
     }
 
@@ -131,7 +130,7 @@ public class Venda {
         return this;
     }
 
-    public Venda withEndereco(EnderecoDTO endereco) {
+    public Venda withEndereco(int endereco) {
         this.endereco = endereco;
         return this;
     }

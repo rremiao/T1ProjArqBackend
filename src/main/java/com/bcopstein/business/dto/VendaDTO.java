@@ -1,5 +1,6 @@
 package com.bcopstein.business.dto;
 
+
 public class VendaDTO {
     private int id;
     private double frete;
