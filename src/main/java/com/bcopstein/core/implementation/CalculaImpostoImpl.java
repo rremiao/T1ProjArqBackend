@@ -4,6 +4,9 @@ import com.bcopstein.business.dto.ProdutoDTO;
 import java.util.List;
 import com.bcopstein.business.interfaces.ICalculaImposto;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class CalculaImpostoImpl implements ICalculaImposto {
 
     public double calculaImpostoSimples(List<ProdutoDTO> produtos) {

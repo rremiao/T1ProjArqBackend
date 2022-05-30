@@ -1,10 +1,7 @@
 package com.bcopstein.core.repository;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
 import com.google.gson.Gson;
 
 import com.bcopstein.business.interfaces.IVendaRepository;
@@ -37,11 +34,15 @@ public class VendaRepository implements IVendaRepository {
     @Autowired
     ProdutoService produtoService;
 
+    @Autowired
     CalculaFreteImpl calculaFrete;
 
+    @Autowired
     CalculaImpostoImpl calculaImposto;
 
+    @Autowired
     CalculaLimiteHorarioImpl calculaLimiteHorario;
+
     
     public boolean confirmaVenda(final List<ItemCarrinhoDTO> itens) {
 
@@ -95,7 +96,6 @@ public class VendaRepository implements IVendaRepository {
         Integer imposto = 0;
         PrecosDTO response = new PrecosDTO();
         List<ProdutoDTO> produtos = produtoService.listaProdutos();
-        Map<String,Integer> cacheFrete = new HashMap<String,Integer>(); 
 
         //Verifica se o endereço existe
         if (param.getEndereco() == null ||
@@ -103,12 +103,6 @@ public class VendaRepository implements IVendaRepository {
             param.getEndereco().isBlank()) {
          throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Endereco invalido");
        } 
-
-        // Verifica se o endereço já está na cache
-        if (!cacheFrete.keySet().contains(param.getEndereco())) {
-            // Calcula o frete
-            cacheFrete.put(param.getEndereco(), 25);
-        }
 
         for (final ItemCarrinhoDTO it : param.getItens()) {
             // Procurar o produto pelo código
@@ -123,7 +117,7 @@ public class VendaRepository implements IVendaRepository {
         }
         
         imposto = calculaImposto.calculaImpostoSubtotal(subtotal);
-        double frete = cacheFrete.get(param.getEndereco());
+        double frete = 25.0;
 
         response.withSubtotal(subtotal)
                 .withImposto(imposto)

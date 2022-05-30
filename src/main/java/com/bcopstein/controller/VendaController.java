@@ -34,4 +34,5 @@ public class VendaController {
   @CrossOrigin(origins = "*")
   public PrecosDTO calculaSubtotal(@RequestBody final ParamSubtotal_DTO param) {    
     return vendaService.calculaSubtotal(param);
-  }}
+  }
+}

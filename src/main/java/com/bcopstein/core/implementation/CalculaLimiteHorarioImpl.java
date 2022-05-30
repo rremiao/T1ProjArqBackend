@@ -4,6 +4,9 @@ import java.time.LocalDateTime;
 
 import com.bcopstein.business.interfaces.ICalculaLimiteHorario;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class CalculaLimiteHorarioImpl implements ICalculaLimiteHorario{
     public double calculaLimiteHorarioSimples() {
         LocalDateTime data = LocalDateTime.now();
