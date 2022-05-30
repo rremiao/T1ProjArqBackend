@@ -17,6 +17,8 @@ public class ItemCarrinhoDTO {
       this.custo = custo;
     }
   
+      public ItemCarrinhoDTO(){}
+
     public int getCodigo() {
       return codigo;
     }

@@ -174,11 +174,10 @@ public class VendaRepository implements IVendaRepository {
         String json = "";
         Gson gson = new Gson();
 
-
         for(ItemCarrinhoDTO item : itens) {
             json.concat(gson.toJson(item));
         }
-
+        json = String.join(",", "{");
         return json;
     }
 

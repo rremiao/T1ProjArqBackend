@@ -1,13 +1,10 @@
 package com.bcopstein.controller;
 
-
-import java.util.List;
-
-import com.bcopstein.business.dto.ItemCarrinhoDTO;
 import com.bcopstein.business.dto.ParamSubtotal_DTO;
 import com.bcopstein.business.dto.PrecosDTO;
 
 import com.bcopstein.core.services.VendaService;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -26,7 +23,7 @@ public class VendaController {
 
   @PostMapping("/confirmacao")
   @CrossOrigin(origins = "*")
-  public boolean confirmaVenda(@RequestBody final List<ItemCarrinhoDTO> itens) {
+  public boolean confirmaVenda(@RequestBody final String itens) {
     return vendaService.confirmaVenda(itens);
   }
 

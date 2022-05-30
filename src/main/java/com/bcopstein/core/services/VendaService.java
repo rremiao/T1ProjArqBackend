@@ -1,8 +1,13 @@
 package com.bcopstein.core.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.bcopstein.core.repository.VendaRepository;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,8 +23,18 @@ public class VendaService {
     @Autowired
     VendaRepository vendaRepository;
 
-    public boolean confirmaVenda(final List<ItemCarrinhoDTO> itens) {
-        return vendaRepository.confirmaVenda(itens);
+    public boolean confirmaVenda(final String itens) {
+        ObjectMapper mapper = new ObjectMapper();
+
+        List<ItemCarrinhoDTO> myItems = new ArrayList<>();
+        try {
+          myItems = mapper.readValue(itens, new TypeReference<List<ItemCarrinhoDTO>>() {});
+        } catch (JsonMappingException e) {
+          e.printStackTrace();
+        } catch (JsonProcessingException e) {
+          e.printStackTrace();
+        }
+        return vendaRepository.confirmaVenda(myItems);
     }
 
     public PrecosDTO calculaSubtotal(final ParamSubtotal_DTO param) {

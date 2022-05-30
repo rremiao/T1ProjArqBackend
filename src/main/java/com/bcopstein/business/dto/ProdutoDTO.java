@@ -20,8 +20,12 @@ public class ProdutoDTO {
     return preco;
   }
 
-  public int getQtdade() {
+  public int getQuantidade() {
     return quantidade;
+  }
+
+  public void setQuantidade(int quantidade) {
+    this.quantidade = quantidade;
   }
 
   public String getUrlImagem() {
