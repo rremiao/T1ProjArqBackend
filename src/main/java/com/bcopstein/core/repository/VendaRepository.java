@@ -6,9 +6,6 @@ import com.google.gson.Gson;
 
 import com.bcopstein.business.interfaces.IVendaRepository;
 import com.bcopstein.core.implementation.VendaOperationRepository;
-import com.bcopstein.core.implementation.CalculaFreteImpl;
-import com.bcopstein.core.implementation.CalculaImpostoImpl;
-import com.bcopstein.core.implementation.CalculaLimiteHorarioImpl;
 import com.bcopstein.core.services.EnderecoService;
 import com.bcopstein.core.services.ProdutoService;
 import com.bcopstein.business.dto.EnderecoDTO;
@@ -35,17 +32,7 @@ public class VendaRepository implements IVendaRepository {
     ProdutoService produtoService;
 
     @Autowired
-    CalculaFreteImpl calculaFrete;
-
-    @Autowired
-    CalculaImpostoImpl calculaImposto;
-
-    @Autowired
-    CalculaLimiteHorarioImpl calculaLimiteHorario;
-
-    @Autowired
     EnderecoService enderecoService;
-
     
     public boolean confirmaVenda(final List<ItemCarrinhoDTO> itens) {
 
@@ -84,7 +71,7 @@ public class VendaRepository implements IVendaRepository {
         Venda venda = new Venda();
         
         venda = venda.withDesconto(0)
-                     .withImposto(calculaImposto.calculaImpostoSimples(produtos))
+                     .withImposto(produtoService.calculaImpostoSimples(produtos))
                      .withValorTotal(calculaValorTotal(itens))
                      .withFrete(25)
                      .withEndereco(1)
@@ -119,12 +106,10 @@ public class VendaRepository implements IVendaRepository {
             }
         }
         
-        imposto = calculaImposto.calculaImpostoSubtotal(subtotal);
         double frete = 25.0;
 
         response.withSubtotal(subtotal)
                 .withImposto(imposto)
-                .withFrete(frete)
                 .withTotal(subtotal + imposto + frete);
 
         return response;

@@ -3,6 +3,8 @@ package com.bcopstein.core.services;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.bcopstein.core.implementation.CalculaImpostoImpl;
+import com.bcopstein.core.implementation.CalculaLimiteHorarioImpl;
 import com.bcopstein.core.repository.VendaRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -23,6 +25,13 @@ public class VendaService {
     @Autowired
     VendaRepository vendaRepository;
 
+    @Autowired
+    CalculaImpostoImpl calculaImpostoImpl;
+
+
+    @Autowired
+    CalculaLimiteHorarioImpl calculaLimiteHorario;
+
     public boolean confirmaVenda(final String itens) {
         ObjectMapper mapper = new ObjectMapper();
 
@@ -38,7 +47,11 @@ public class VendaService {
     }
 
     public PrecosDTO calculaSubtotal(final ParamSubtotal_DTO param) {
-        return vendaRepository.calculaSubtotal(param);
+      PrecosDTO response = vendaRepository.calculaSubtotal(param);
+
+      response.withFrete(calculaImpostoImpl.calculaImpostoSubtotal(response.getSubtotal()));
+
+      return response;
     }
 
     public List<VendaDTO> listaVendas() {
